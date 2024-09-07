@@ -1,7 +1,8 @@
 package models
 
 import (
-	"github.com/alexandra1044/electronics-store-manager/pkg/config"
+	"alexandra1044/electronics-store-manager/pkg/config"
+
 	"github.com/jinzhu/gorm"
 )
 
@@ -16,6 +17,30 @@ type Product struct {
 
 func init() {
 	config.Connect()
-	db = config.GetDB
+	db = config.GetDB()
 	db.AutoMigrate(&Product{})
+}
+
+func (p *Product) CreateProduct() *Product {
+	db.NewRecord(p)
+	db.Create(&p)
+	return p
+}
+
+func getAllProducts() []Product {
+	var Product []Product
+	db.Find(&Product)
+	return Product
+}
+
+func GetProductById(Id int64) (*Product, *gorm.DB) {
+	var getProduct Product
+	db := db.Where("ID=?id", Id).Find(&getProduct)
+	return &getProduct, db
+}
+
+func DeleteProduct(Id int64) Product {
+	var product Product
+	db.Where("ID=?id", Id).Delete(product)
+	return product
 }

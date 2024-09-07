@@ -1,7 +1,8 @@
 package routes
 
 import (
-	"github.com/alexandra1044/electronics-store-manager/pkg/controllers"
+	"alexandra1044/electronics-store-manager/pkg/controllers"
+
 	"github.com/gorilla/mux"
 )
 
