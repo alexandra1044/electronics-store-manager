@@ -27,7 +27,7 @@ func (p *Product) CreateProduct() *Product {
 	return p
 }
 
-func getAllProducts() []Product {
+func GetAllProducts() []Product {
 	var Product []Product
 	db.Find(&Product)
 	return Product
