@@ -1,6 +1,6 @@
 # electronics-store-manager
 
-Project to learn how to integrate a mysql database into a go program.
+Project to learn how to integrate a mysql database into a Go program.
 
 Tested with postman
 
